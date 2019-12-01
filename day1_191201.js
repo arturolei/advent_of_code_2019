@@ -206,6 +206,7 @@ const rawNumbers = `104451
 147071
 133740`;
 
+// Part I
 function fuelCalc(mass) {
     return Math.floor(mass/3)-2;
 }
@@ -218,3 +219,15 @@ console.log(fuelReqArr);
 
 const totalFuelReq = fuelReqArr.reduce((curVal, sum) => curVal + sum,0);
 console.log(totalFuelReq);
+
+//Part II
+function fuelCalcDeep(mass){
+    return Math.floor(mass/3)-2 >= 0 ? Math.floor(mass/3)-2+ fuelCalcDeep(Math.floor(mass/3)-2):0;
+}
+
+//console.log(fuelCalcDeep(1969));
+
+const deepFuelReqArr = numbersArray.map(mass=>fuelCalcDeep(mass));
+console.log(deepFuelReqArr);
+const deepTotalFuelReq= deepFuelReqArr.reduce((curVal, sum) => curVal + sum,0);
+console.log(deepTotalFuelReq);
