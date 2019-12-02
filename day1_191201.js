@@ -105,6 +105,7 @@ Here is the raw input
 
 */
 
+//I used string literal to get the raw input into JS
 const rawNumbers = `104451
 112406
 109733
@@ -211,6 +212,9 @@ function fuelCalc(mass) {
     return Math.floor(mass/3)-2;
 }
 
+/* numbersArray is the raw string input converted to an array and 
+then each string input in the array is turned into a numerical input
+*/
 const numbersArray = rawNumbers.split('\n').map(numStr => parseInt(numStr,10));
 console.log(numbersArray);
 
@@ -221,6 +225,7 @@ const totalFuelReq = fuelReqArr.reduce((curVal, sum) => curVal + sum,0);
 console.log(totalFuelReq);
 
 //Part II
+//This is a recursive solution. It will keep doing the mass/3-2 until it gets a negative result
 function fuelCalcDeep(mass){
     return Math.floor(mass/3)-2 >= 0 ? Math.floor(mass/3)-2+ fuelCalcDeep(Math.floor(mass/3)-2):0;
 }
